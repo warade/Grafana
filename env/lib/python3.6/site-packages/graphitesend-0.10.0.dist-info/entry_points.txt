@@ -1,0 +1,3 @@
+[console_scripts]
+graphitesend = graphitesend.graphitesend:cli
+
