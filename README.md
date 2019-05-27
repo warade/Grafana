@@ -44,3 +44,4 @@ def login_handler(sender, user, request, **kwargs):
 
 user_logged_in.connect(login_handler)
 ```
+Don't forget to choose your graphite_server in quickstart/models.py
