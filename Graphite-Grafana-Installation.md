@@ -92,7 +92,7 @@ docker run -d\
  
 3. Run for Graphite
 ```
-http://ec2-52-26-169-20.us-west-2.compute.amazonaws.com:80
+your_ec2_host:80
 ```
 Done!
 
