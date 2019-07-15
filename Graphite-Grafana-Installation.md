@@ -146,7 +146,7 @@ The setup was
 - Django proect
  - settings.py
   ```
-  STATSD_HOST = 'ec2-52-26-169-20.us-west-2.compute.amazonaws.com'
+  STATSD_HOST = 'your_ec2_host'
   STATSD_PORT = 8125
   ```
  - views.py
@@ -169,7 +169,7 @@ from pyformance import counter, count_calls
 @count_calls
 def someview(request):
 	#statsd.incr('success.count')
-	g = graphitesend.init(prefix='test', system_name='', graphite_server='ec2-52-26-169-20.us-west-2.compute.amazonaws.com')
+	g = graphitesend.init(prefix='test', system_name='', graphite_server='your_ec2_host')
 	g.send('count', counter("someview_calls").get_count())
 	return HttpResponse('Hello, World!')
 ```
@@ -191,7 +191,7 @@ class UserList(APIView):
 	    serializer = UserSerializer(users, many=True)
 	    counter = metricsRegistry.counter("GET_called")
 	    counter.inc()
-	    g = graphitesend.init(prefix='test', system_name='', graphite_server='ec2-52-26-169-20.us-west-2.compute.amazonaws.com')
+	    g = graphitesend.init(prefix='test', system_name='', graphite_server='your_ec2_host')
 	    g.send('count', counter.get_count())
 	    #print(counter("get_calls").get_count())
 	    return Response(serializer.data)
